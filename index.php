@@ -53,10 +53,10 @@ if(isset($_COOKIE['miasto'])) {
 if(isset($_POST['submit'])) {
   if (!empty($_POST['email']) && !empty($_POST['pass'])){
 
-    $servername = "sql4.freesqldatabase.com";
-    $user = "sql4424067";
-    $pass = "b7JsB8ixrj";
-    $dbname = "sql4424067";
+    $servername = "sql11.freesqldatabase.com";
+    $user = "sql11426662";
+    $pass = "1rdyzax38G";
+    $dbname = "sql11426662";
 
     $link = mysqli_connect($servername, $user, $pass, $dbname);
     if($link === false){
