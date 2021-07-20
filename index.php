@@ -259,10 +259,10 @@ if(isset($_POST['submitX'])) {
 
   if (!empty($_POST['emailX']) && !empty($_POST['passX'])){
 
-    $servernameX = "sql4.freesqldatabase.com";
-    $userX = "sql4424067";
-    $passX = "b7JsB8ixrj";
-    $dbnameX = "sql4424067";
+    $servernameX = "sql11.freesqldatabase.com";
+    $userX = "sql11426662";
+    $passX = "1rdyzax38G";
+    $dbnameX = "sql11426662";
     
     $linkX = mysqli_connect($servernameX, $userX, $passX, $dbnameX);
     
